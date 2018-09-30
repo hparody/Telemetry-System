@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Sistema de Telemetría</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="http://34.230.52.250/favicon.ico" />  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+	<link href="css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+  	<link rel="stylesheet" href="estilos.css">
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTybCbEORm4Tl4la7JR6Z-yR4GjkXaeFI&callback=initMap">
+    </script>
+	<style>
+		#Background{
+			background-color: #F8F8F8;
+		}
+	</style>
+</head>
+<body id="Background">
+	<header>	
+		<div class="container">					
+			<h1 align="center"> <b> Sistema de Telemetría - SYRUS 3G Bluetooth </b></h1>
+		</div>
+	</header>	
+	<div class="container">
+		<div class="row">
+			<!-- Tabs Definition-->
+			<div class="col-md-12">
+				<ul class="nav nav-tabs nav-justified">
+					<li><a href="index.html">Tiempo Real</a></li>
+					<li class="active"><a href="historics.html">Históricos</a></li>
+				</ul>
+			</div>
+			<!-- Coordinates Table -->
+			<div class="col-xs-12 col-md-6" style="float: left" text-align="center" align="right">
+				<h3 align="center"> <b> Consulta de Históricos </b></h3>
+				<p style="border: ridge #D2D2D2 1px;"></p>
+				<!-- Date Pickers -->
+				<div >
+					<h5 class="col-md-12" align="left">Fecha de Inicio:</h5>
+					<!-- Date picker 1 -->
+					<div class="bfh-datepicker col-md-6" id="datepicker_from"></div>
+					<!-- Time picker 1 -->
+					<div class="bfh-timepicker col-md-6" id="timepicker_from"></div>
+					<h5 class="col-md-12" align="left">Fecha de Fin:</h5>
+					<!-- Date picker 2 -->
+					<div class="bfh-datepicker col-md-6"  id="datepicker_to"></div>
+					<!-- Time picker 2 -->
+					<div class="bfh-timepicker col-md-6" id="timepicker_to"></div>
+					<!-- Query Button -->
+					<div class="col-md-12" align="center" style="margin-top: 10px">
+						<div class="col-xs-6"> <button class="btn" onclick="getValues()">Consultar Rango</button></div>
+						<div class="col-xs-6"> <button class="btn" onclick="plot_path()"> Graficar Recorrido</button></div>
+					</div>
+						<!-- Historics Table -->
+					<div class="col-md-12 pre-scrollable" style="height: 270px; margin-top: 10px">
+						<table border style="width:100%; float: center; overflow-x: auto; overflow-y: auto;" id="table-historics" class="table table-bordered table-hover table-responsive">
+							<thead class="thead-light">
+								<tr>
+									<th width="10%" class="text-center">ID</th>
+									<th width="25%" class="text-center" >Latitud </th>
+									<th width="25%" class="text-center" >Longitud</th>
+									<th width="30%" class="text-center" >Fecha</th>	
+								</tr>
+							</thead>
+							<tbody id="body_historics"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>										
+			<div class="col-xd-12 col-md-6" style="float: center">
+				<div style="width:100%">
+					<!-- Map -->
+					<h3 align="center"> <b>Ubicación en el Mapa </b></h3>
+					<p style="border: ridge #D2D2D2 1px;"></p>
+					<div id="map" class="z-depth-1" style="height: 430px; width: 100%; float:center;" align="center"></div>
+					<div class="col-md-12">
+						<div id = "slider" class="bfh-slider col-xs-11" data-min="10" data-max="300" onchange="DrawCircle()" data-name="slider1"></div>
+						<div class="col-xs-1">
+							<a href="#" data-toggle="tooltip" data-placement="top" title="Mueve el Slider para ajustar el rango de coordenadas que quiere consultar" style="position:absolute; top:8px;">?</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-formhelpers-timepicker.js"></script>
+	<script src="map_historics.js"></script>
+	<script src="datepicker.js"></script>
+	<script src="js/jquery.stickytableheaders.js"></script>
+	<!-- Bootstrap Form Helpers -->
+	<script src="js/bootstrap-formhelpers.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	    $("table-historics").stickyTableHeaders()   
+	});
+</script>
+</body>
+</html>
