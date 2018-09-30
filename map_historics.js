@@ -24,10 +24,10 @@ var pathpoly = [];
 var circles =[];
 var w=0;
 var l1,l2;
-var id_vector = [];
-var lat_vector = [];
-var lng_vector = [];
-var fecha_vector = [];
+var id_received = [];
+var lat_received = [];
+var lng_received = [];
+var fecha_received = [];
 var ltis,lngis,dates_filtered,id_filtered;
 
 function get_all_data(){
@@ -274,36 +274,29 @@ function MeasureDistance(longbase,latbase,r){
 }
 
 function filter_table(){
-  var lat_received =  ltis; var lng_received = lngis;
-  var fecha_received = dates_filtered; var id_received = id_filtered; 
+  id_received = [];
+  lat_received = [];
+  lng_received = [];
+  fecha_received = [];
+  lat_received =  ltis; lng_received= lngis;
+  fecha_received = dates_filtered; id_received = id_filtered;
   var oTable = document.getElementById("table-historics");
-  var rowLength = oTable.rows.length;
-  var id_val = null;
-  var id_to_mark = []; var id_saved = [];
-  length_received = id_received.length;
-  var i = 0; var j = 0;
-  while(i<id_received.length){
-    j = 0;
-    while(j < rowLength){
-      var oCells = oTable.rows.item(j).cells;
-      id_val = oCells.item(0).innerHTML;
-      if(id_received[i] == id_val){
-        id_to_mark[i] = id_val; 
-        id_saved[i] = j;
-        j = rowLength;
-      }else{
-        j = j+1;
-      }
-    }
-    i = i+1;
+  var row_length = oTable.rows.length;
+  for (i = 1; i < row_length; i++){
+    oTable.deleteRow(i);
   }
-  for(m = 1;m<rowLength;m++){
-    var y = document.getElementById("table-historics").rows[m];
-    y.style.backgroundColor = "white";
-  }
-  for(k=0;k<id_saved.length;k++){
-    var y = document.getElementById("table-historics").rows[id_saved[k]];
-    y.style.backgroundColor = "lightBlue";
+  for(j = 0; j < id_received.length; j++){
+    console.log(fecha_received[j]);
+    var row = oTable.insertRow(j+1);
+    row.style.backgroundColor = "lightblue";
+    var cellID = row.insertCell(0);
+    var cellLat = row.insertCell(1);
+    var cellLng = row.insertCell(2);
+    var cellFecha = row.insertCell(3);
+    cellID.innerHTML = id_received[j];
+    cellLat.innerHTML = lat_received[j];
+    cellLng.innerHTML = lng_received[j];
+    cellFecha.innerHTML = fecha_received[j];
   }
 }
 
@@ -320,8 +313,8 @@ function initVariablesAgain(){
   paths=[];
   w=0;
   l1,l2;
-  id_vector = [];
-  lat_vector = [];
-  lng_vector = [];
-  fecha_vector = [];
+  id_received = [];
+  lat_received = [];
+  lng_received = [];
+  fecha_received = [];
 }
