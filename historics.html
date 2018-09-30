@@ -9,8 +9,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
 	<link href="css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
   	<link rel="stylesheet" href="estilos.css">
-    <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTybCbEORm4Tl4la7JR6Z-yR4GjkXaeFI&callback=initMap">
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTybCbEORm4Tl4la7JR6Z-yR4GjkXaeFI&callback=initMap"  async defer>
     </script>
 	<style>
 		#Background{
@@ -57,7 +57,7 @@
 						<!-- Historics Table -->
 					<div class="col-md-12 pre-scrollable" style="height: 270px; margin-top: 10px">
 						<table border style="width:100%; float: center; overflow-x: auto; overflow-y: auto;" id="table-historics" class="table table-bordered table-hover table-responsive">
-							<thead class="thead-light">
+							<thead>
 								<tr>
 									<th width="10%" class="text-center">ID</th>
 									<th width="25%" class="text-center" >Latitud </th>
@@ -92,14 +92,12 @@
 	<script src="js/bootstrap-formhelpers-timepicker.js"></script>
 	<script src="map_historics.js"></script>
 	<script src="datepicker.js"></script>
-	<script src="js/jquery.stickytableheaders.js"></script>
 	<!-- Bootstrap Form Helpers -->
 	<script src="js/bootstrap-formhelpers.min.js"></script>
 	<script>
-	$(document).ready(function(){
-	    $('[data-toggle="tooltip"]').tooltip();
-	    $("table-historics").stickyTableHeaders()   
-	});
-</script>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
 </body>
 </html>

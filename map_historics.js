@@ -94,10 +94,6 @@ function refresh_marker(latitude, longitude, fecha,id) {
   pathpoly.push(new google.maps.LatLng(latitude,longitude));
   id_vector.push(id);
   fechas.push(fecha);
-  //fechas.forEach(function(elemento,indice,array){
-    //var auxfecha=String(elemento);
-    //dates.push(auxfecha);
-  //});
   var icon_base = 'http://34.230.52.250/';
   var marker = new google.maps.Marker({ 
     position: new google.maps.LatLng(latitude, longitude),
@@ -131,7 +127,7 @@ function refresh_marker(latitude, longitude, fecha,id) {
   });
   google.maps.event.addListener(marker, 'click', function(evt){
       var infowindow = new google.maps.InfoWindow({
-        content:"Latitud: " + evt.latLng.lat().toFixed(5) + ", Longitud: " + evt.latLng.lng().toFixed(5) + ", Fecha: " + fechas[idx]
+        content:"Latitud: " + evt.latLng.lat().toFixed(5) + ", Longitud: " + evt.latLng.lng().toFixed(5) + ", Fecha: " + datei
       });
       infowindow.open(map,marker);
   });
@@ -253,6 +249,7 @@ function DrawCircle(){
   circles.push(Circle);
   MeasureDistance(auxlat,auxlng,r);
 }
+
 function DeleteCircles(){
   for (i=0;i<circles.length;i++){
     circles[i].setMap(null);
@@ -308,7 +305,23 @@ function filter_table(){
     var y = document.getElementById("table-historics").rows[id_saved[k]];
     y.style.backgroundColor = "lightBlue";
   }
-    
+}
 
-
+function initVariablesAgain(){
+  lats=[];
+  lngs=[];
+  intlats=[];
+  intlngs=[];
+  intlat=[];
+  intlng=[];
+  fechas=[];
+  windows=[];
+  dates=[];
+  paths=[];
+  w=0;
+  l1,l2;
+  id_vector = [];
+  lat_vector = [];
+  lng_vector = [];
+  fecha_vector = [];
 }
