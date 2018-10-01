@@ -1,5 +1,5 @@
 // Refresh for all data: table and map
-var myInterval = setInterval(refresh, 2900);
+var myInterval = setInterval(refresh, 3500);
 var map;
 var marker;
 var path_vector = [];

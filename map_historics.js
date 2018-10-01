@@ -292,7 +292,7 @@ function filter_table(){
 
   for(j = 0; j < id_received.length; j++){
     var row = tbody.insertRow(j);
-    row.style.backgroundColor = "lightblue";
+    row.style.backgroundColor = "rgba(18, 66, 243, 0.35)";
     var cellID = row.insertCell(0);
     var cellLat = row.insertCell(1);
     var cellLng = row.insertCell(2);

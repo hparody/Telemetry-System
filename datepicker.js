@@ -13,12 +13,10 @@ var currentValueTime = null;
 $(document).ready(function() {
 	$("#datepicker_from").bfhdatepicker({
 		format: 'y-m-d',
-		max: 'today',
-		input:'form-control',
+		input:'form-control'
 	}); 
 	$("#datepicker_to").bfhdatepicker({
 		format: 'y-m-d',
-		max: 'today',
 		input:'form-control'
 	});
 	
