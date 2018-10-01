@@ -283,15 +283,14 @@ function filter_table(){
   var oTable = document.getElementById("table-historics");
   var tbody = document.getElementById("body_historics");
   var row_length = oTable.rows.length;
-  console.log(row_length);
   var Parent = document.getElementById("body_historics");
+  
   while(Parent.hasChildNodes())
   {
      Parent.removeChild(Parent.firstChild);
   }
 
   for(j = 0; j < id_received.length; j++){
-    console.log(fecha_received[j]);
     var row = tbody.insertRow(j);
     row.style.backgroundColor = "lightblue";
     var cellID = row.insertCell(0);

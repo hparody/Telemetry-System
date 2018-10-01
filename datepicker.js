@@ -78,10 +78,6 @@ function plot_path(){
 		var oTable = document.getElementById("table-historics");
 		var rowLength = oTable.rows.length; 
 		for (j = 0; j < rowLength; j++){
-			console.log(lat_vector_table[j]);
-			console.log(id_vector_table[j]);
-			console.log(lng_vector_table[j]);
-			console.log(fecha_vector_table[j]);
 			lat_val = lat_vector_table[j];
 			lng_val = lng_vector_table[j];
 			fecha_val = fecha_vector_table[j];
