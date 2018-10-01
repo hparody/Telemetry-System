@@ -42,7 +42,7 @@ function refresh() {
   }
 }
 
-function initMap() { 
+function initMap(){ 
   var coordinates = get_all_data();
   var lat_i = coordinates[1];
   var lng_i = coordinates[2];
