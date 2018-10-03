@@ -9,40 +9,49 @@ var fecha_vector_table = [];
 var id_vector_table = [];
 var currentValueDate = null;
 var currentValueTime = null;
+var pickerDateFrom = null;
+var pickerDateTo = null;
+var pickerHourFrom = null;
+var pickerHourTo = null;
 
 $(document).ready(function() {
-	$("#datepicker_from").bfhdatepicker({
-		format: 'y-m-d',
-		input:'form-control'
-	}); 
-	$("#datepicker_to").bfhdatepicker({
-		format: 'y-m-d',
-		input:'form-control'
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	var hh = today.getHours();
+	var min = today.getMinutes();
+	var currentDateTime = yyyy +"-" + mm + "-" + dd + " " + hh + ":" + min;
+	var currentDate = yyyy +"-" + mm + "-" + dd +" 23:59";
+	var endDate = moment().startOf('hour').add(32, 'hour');
+	$('input[name="daterange"]').daterangepicker({
+		opens: 'right',
+		minDate: "2018-09-05 00:00",
+		maxDate: currentDate,
+		timePickerIncrement: 10,
+		minYear: 2018,
+		maxYear: yyyy,
+		timePicker24Hour: true,
+		timePicker: true,
+		autoApply: true,
+		startDate: currentDateTime,
+		endDate: endDate,
+		locale: {
+			format: 'YYYY-MM-DD HH:mm'
+		}
 	});
-	
-	$("#timepicker_from").bfhtimepicker();
-	$("#timepicker_to").bfhtimepicker();
 
-	$("#datepicker_from").on("change.bfhdatepicker", function (e) {
-		currentValueDate = $("#datepicker_from").bfhdatepicker().val();
-		$("#datepicker_to").bfhdatepicker().val(currentValueDate);
-		$("#datepicker_to").bfhdatepicker({
-			min: currentValueDate
-		}); 
-	});
-	$("#timepicker_from").on("change.bfhtimepicker",function (e) {
-		var currentValueTime = $("#timepicker_from").bfhtimepicker().val();
-		$("#timepicker_to").bfhtimepicker().val(currentValueTime);
-	});
+	
+});
+
+$('#daterange').on('apply.daterangepicker', function(ev, picker) {
+	pickerDateTimeFrom = picker.startDate.format('YYYY-MM-DD HH:mm');
+	pickerDateTimeTo = picker.endDate.format('YYYY-MM-DD HH:mm');
 });
 
 function getValues(){
-    var fromDate = $("#datepicker_from").bfhdatepicker().val();
-    var fromHour = $("#timepicker_from").bfhtimepicker().val();
-    var toDate = $("#datepicker_to").bfhdatepicker().val();
-    var toHour = $("#timepicker_to").bfhtimepicker().val();
-    var from_Date_Time = fromDate + ' ' + fromHour;
-    var to_Date_Time = toDate + ' ' + toHour;
+    var from_Date_Time = pickerDateTimeFrom;
+    var to_Date_Time = pickerDateTimeTo;
     if(from_Date_Time!= '' && to_Date_Time != '') {
 		$.ajax({
 			'async': false,  

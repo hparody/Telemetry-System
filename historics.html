@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="shortcut icon" type="image/x-icon" href="http://34.230.52.250/favicon.ico" />  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<link href="css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
   	<link rel="stylesheet" href="estilos.css">
 	<style>
@@ -36,16 +37,11 @@
 				<p style="border: ridge #D2D2D2 1px;"></p>
 				<!-- Date Pickers -->
 				<div>
-					<h5 class="col-md-12" align="left">Fecha de Inicio:</h5>
-					<!-- Date picker 1 -->
-					<div class="bfh-datepicker col-md-6" id="datepicker_from"></div>
-					<!-- Time picker 1 -->
-					<div class="bfh-timepicker col-md-6" id="timepicker_from"></div>
-					<h5 class="col-md-12" align="left">Fecha de Fin:</h5>
-					<!-- Date picker 2 -->
-					<div class="bfh-datepicker col-md-6"  id="datepicker_to"></div>
-					<!-- Time picker 2 -->
-					<div class="bfh-timepicker col-md-6" id="timepicker_to"></div>
+					<h5 class="col-md-12" align="center">Fecha de Inicio - Fecha de Fin:</h5>
+					<!-- DateTime picker 1 -->
+					<div style="float:center" class="col-md-12" >
+						<input type="datetime" name="daterange" style="float:center" width="100%" placeholder="YYYY-MM-DD hh:mm - YYYY-MM-DD hh:mm" size="32" id="daterange">
+					</div>
 					<!-- Query Button -->
 					<div class="col-md-12" align="center" style="margin-top: 10px">
 						<div class="col-xs-6"> <button class="btn" onclick="getValues()">Consultar Rango</button></div>
@@ -74,7 +70,7 @@
 					<p style="border: ridge #D2D2D2 1px;"></p>
 					<div id="map" class="z-depth-1" style="height: 430px; width: 100%; float:center;" align="center"></div>
 					<div class="col-md-12">
-						<div id = "slider" class="bfh-slider col-xs-11" data-min="10" data-max="300" onchange="DrawCircle()" data-name="slider1"></div>
+						<div id = "slider" class="bfh-slider col-xs-11" data-value="10" data-min="10" data-max="300" onchange="DrawCircle()" data-name="slider1"></div>
 						<div class="col-xs-1">
 							<a href="#" data-toggle="tooltip" data-placement="top" title="Mueve el Slider para ajustar el rango de coordenadas que quiere consultar" style="position:absolute; top:8px;">?</a>
 						</div>
@@ -86,6 +82,8 @@
 	<!-- Bootstrap -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<script src="js/bootstrap-formhelpers-timepicker.js"></script>
 	<script src="map_historics.js"></script>
 	<script src="datepicker.js"></script>
@@ -100,4 +98,4 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTybCbEORm4Tl4la7JR6Z-yR4GjkXaeFI&callback=initMap"  async defer>
 	</script>
 </body>
-</html>
+</htm
