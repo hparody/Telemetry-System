@@ -229,7 +229,7 @@ function removePolyline(){
 }
 function DrawCircle(){
   DeleteCircles();
-  r=parseFloat(document.getElementById("slider").value);
+  var r=parseFloat(document.getElementById("slider").value);
   console.log(r);
   if (w==0){
     var coord=new google.maps.LatLng(l1, l2);

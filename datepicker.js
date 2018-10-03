@@ -41,8 +41,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$("slider").bfhslider({
-
+	$("#slider").bfhslider({
+		value:10,
+		min:10,
+		max:300,
+		name: "slider1"
 	});
 });
 
