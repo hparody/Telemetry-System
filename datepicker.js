@@ -25,7 +25,7 @@ $(document).ready(function() {
 	var currentDate = yyyy +"-" + mm + "-" + dd +" 23:59";
 	var endDate = moment().startOf('hour').add(32, 'hour');
 	$('input[name="daterange"]').daterangepicker({
-		opens: 'right',
+		opens: 'center',
 		minDate: "2018-09-05 00:00",
 		maxDate: currentDate,
 		timePickerIncrement: 10,
@@ -41,7 +41,9 @@ $(document).ready(function() {
 		}
 	});
 
-	
+	$("slider").bfhslider({
+
+	});
 });
 
 $('#daterange').on('apply.daterangepicker', function(ev, picker) {
