@@ -47,6 +47,11 @@ function get_all_data_2(){
   return received_data_2;
 }
 
+$(window).click(function(e) {
+  clicked = false;
+  clicked_2 = false;
+});
+
 function refresh() {
   var coord = get_all_data();
   var coord_2 = get_all_data_2();
@@ -54,7 +59,7 @@ function refresh() {
   var ID = document.getElementById("ID"); 
   ID.textContent = coord[0];
   var Vehiculo = document.getElementById("Vehiculo"); 
-  Vehiculo.textContent =1;
+  Vehiculo.textContent ="1 - Azul";
   var Latitud = document.getElementById("Latitud"); 
   Latitud.textContent =  coord[1];
   var Longitud = document.getElementById("Longitud"); 
@@ -65,7 +70,7 @@ function refresh() {
   var ID_2 = document.getElementById("ID_2"); 
   ID_2.textContent = coord_2[0];
   var Vehiculo_2 = document.getElementById("Vehiculo_2"); 
-  Vehiculo_2.textContent =2;
+  Vehiculo_2.textContent ="2 - Rojo";
   var Latitud_2 = document.getElementById("Latitud_2"); 
   Latitud_2.textContent =  coord_2[1];
   var Longitud_2 = document.getElementById("Longitud_2"); 
@@ -125,11 +130,6 @@ function initMap(){
       });
     infowindow.open(map,marker);
     });
-
-    google.maps.event.addListener(map, 'click', function(){
-      clicked = false;
-      clicked_2 = false;
-    });
   }
 
   if(lat_i_2 != "48.858093" && lat_i_2 != "-33.856159"){
@@ -151,11 +151,6 @@ function initMap(){
       });
     infowindow.open(map,marker_2);
     });
-
-    google.maps.event.addListener(map, 'click', function(){
-      clicked = false;
-      clicked_2 = false;
-    });
   }
 }
 
@@ -172,22 +167,12 @@ function refresh_marker(latitude,longitude,fecha) {
    });
   markers.push(marker);
   map.setCenter(new google.maps.LatLng(latitude, longitude)); 
-  if(clicked){
-    InfoWindow_1(latitude,longitude,fecha,map,marker);
-  }
-  google.maps.event.addListener(marker,'click',InfoWindow_1(latitude,longitude,fecha,map,marker));
-  google.maps.event.addListener(map, 'click', function(){
-    clicked = false;
-    clicked_2 = false;
+  google.maps.event.addListener(marker,'click',  function(){
+    var infowindow = new google.maps.InfoWindow({
+      content:"Latitud: " + latitude + ", Longitud: " + longitude + ", Fecha: " + fecha
+    });
+    infowindow.open(map,marker);
   });
-}
-
-function InfoWindow_1(latitude,longitude,fecha,map,marker){
-  clicked = true;
-  var infowindow = new google.maps.InfoWindow({
-    content:"Latitud: " + latitude + ", Longitud: " + longitude + ", Fecha: " + fecha
-  });
-  infowindow.open(map,marker);
 }
 
 function refresh_marker_2(latitude,longitude,fecha) {
@@ -209,10 +194,6 @@ function refresh_marker_2(latitude,longitude,fecha) {
     content:"Latitud: " + latitude + ", Longitud: " + longitude + ", Fecha: " + fecha
     });
     infowindow.open(map,marker_2);
-  });
-  google.maps.event.addListener(map, 'click', function(){
-    clicked = false;
-    clicked_2 = false;
   });
 }
 
