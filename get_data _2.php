@@ -1,6 +1,6 @@
 <?php 
 	require_once 'select_data.php';
-	$sql = "SELECT ID,Latitud,Longitud,Fecha,Vehiculo FROM coordenadas GROUP BY Vehiculo HAVING Vehiculo='2' ORDER BY ID DESC LIMIT 1"; 	# Query we want to generate
+	$sql = "SELECT * FROM coordenadas WHERE Vehiculo='2' ORDER BY ID DESC LIMIT 1"; 	# Query we want to generate
 	$result = select_data($sql);
 	if($result != "zero"){			# Verify if the query was succesfull
 		$row = $result->fetch_assoc();

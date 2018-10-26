@@ -106,17 +106,6 @@ function refresh_marker(latitude, longitude, fecha,id) {
   markers.push(marker);
   map.setCenter(new google.maps.LatLng(latitude, longitude)); 
   google.maps.event.addListener(marker, 'dragend', function(evt){
-      changeMarkerPosition(auxlat,auxlng,marker);
-      CloseWindows();
-      DrawCircle();
-      var infowindow = new google.maps.InfoWindow({
-        content:"Latitud: " + String(auxlat) + ", Longitud: " + String(auxlng) + ", Fecha: " + datei
-       });
-      windows.push(infowindow)
-      infowindow.open(map,marker);
-  });
-  google.maps.event.addListener(marker,'drag', function(evt){
-       DrawCircle();
        lat=evt.latLng.lat().toFixed(5);
        lng=evt.latLng.lng().toFixed(5);
        var ltlng=CheckCoordinatesMatches(lat,lng);
@@ -125,6 +114,14 @@ function refresh_marker(latitude, longitude, fecha,id) {
        auxlat=parseFloat(ltlng.substring(0,lm));
        auxlng=parseFloat(ltlng.substring(lm+1,f));
        datei=ltlng.substring(f+1)
+      changeMarkerPosition(auxlat,auxlng,marker);
+      CloseWindows();
+      DrawCircle();
+      var infowindow = new google.maps.InfoWindow({
+        content:"Latitud: " + String(auxlat) + ", Longitud: " + String(auxlng) + ", Fecha: " + datei
+       });
+      windows.push(infowindow)
+      infowindow.open(map,marker);
   });
   google.maps.event.addListener(marker, 'click', function(evt){
       var infowindow = new google.maps.InfoWindow({

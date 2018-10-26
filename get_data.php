@@ -1,6 +1,6 @@
 <?php 
 	require_once 'select_data.php';
-	$sql = "SELECT ID,Latitud,Longitud,Fecha FROM coordenadas ORDER BY ID DESC LIMIT 1"; 	# Query we want to generate
+	$sql = "SELECT * FROM coordenadas WHERE Vehiculo='1' ORDER BY ID DESC LIMIT 1"; 	# Query we want to generate
 	$result = select_data($sql);
 	if($result != "zero"){			# Verify if the query was succesfull
 		$row = $result->fetch_assoc();

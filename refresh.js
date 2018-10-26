@@ -31,7 +31,7 @@ function get_all_data(){
 }
 
 function get_all_data_2(){
-  var received_data = null;
+  var received_data_2 = null;
     $.ajax({
       'async': false,
       'type': "POST",
@@ -39,10 +39,10 @@ function get_all_data_2(){
       'dataType': 'json',
       'url': "get_data_2.php",
       'success': function (data) {
-          received_data = data;
+          received_data_2 = data;
       }
     }); 
-  return received_data;
+  return received_data_2;
 }
 
 function refresh() {
@@ -56,6 +56,7 @@ function refresh() {
   Longitud.textContent = coord[2];
   var Fecha = document.getElementById("Fecha"); 
   Fecha.textContent = coord[3];
+  
   if(coord[1] != "48.858093" && coord[1] != "-33.856159"){
     refresh_marker(coord[1], coord[2],coord[3]);
     point_marker(coord[1],coord[2]);
@@ -130,7 +131,7 @@ function initMap(){
   }
 }
 
-function refresh_marker(latitude, longitude,fecha) {
+function refresh_marker(latitude,longitude,fecha) {
   clearMarkers();
   path_vector.push(new google.maps.LatLng(latitude, longitude));
   pathpoly.push(new google.maps.LatLng(latitude,longitude));
@@ -151,7 +152,7 @@ function refresh_marker(latitude, longitude,fecha) {
   });
 }
 
-function refresh_marker_2(latitude, longitude,fecha) {
+function refresh_marker_2(latitude,longitude,fecha) {
   clearMarkers_2();
   path_vector_2.push(new google.maps.LatLng(latitude, longitude));
   pathpoly_2.push(new google.maps.LatLng(latitude,longitude));
@@ -195,12 +196,23 @@ function clearMarkers_2() {
 function polyline() {
   var flightPath = new google.maps.Polyline({
     path:pathpoly,
-    strokeColor:"#1a1f26", // "#1a1f26"
+    strokeColor:"#ff0000", // "#1a1f26"
     strokeOpacity:0.5,
     strokeWeight:5,
     map: map
   });
   paths.push(flightPath);
+}
+
+function polyline_2() {
+  var flightPath = new google.maps.Polyline({
+    path:pathpoly,
+    strokeColor:"#1a1f26", // "#1a1f26"
+    strokeOpacity:0.5,
+    strokeWeight:5,
+    map: map
+  });
+  paths_2.push(flightPath);
 }
 
 function removePolyline(){
